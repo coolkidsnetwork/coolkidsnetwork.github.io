@@ -91,8 +91,9 @@ if (top.location != self.location)
 <script language="JavaScript" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/mnfinder.js.download"></script>
 <link href="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/home.css" rel="stylesheet" type="text/css"/>
 <style>
-   #playBtn {
-      position: fixed;
+   
+
+   tion: fixed;
       top: 15px;
       left: 15px;
       background-color: #ccc;
@@ -100,12 +101,14 @@ if (top.location != self.location)
       border: none;
       border-radius: 6px;
       padding: 8px 14px;
-      font-size: 14px;
+      font-size: 14p #playBtn {
+      posix;
       cursor: pointer;
       z-index: 9999;
       transition: background 0.3s ease;
     }
-    #playBtn:hover { background-color: #iaaa; }
+    #playBtn:hover { background-color: #aaa; }
+
 </style>
 <style id="responsive-img-patch">
 /* Responsive image patch (in percentages) */
@@ -126,7 +129,7 @@ if (top.location != self.location)
 <button id="playBtn">ايقاف التشغيل</button>
 		<div class="container" id="content">
 
-    <audio id="bg-audio" loop="" src="Music.mp3"></audio>
+    <audio id="bg-audio" loop src="Music.mp3"></audio>
     <button id="playBtn">تشغيل الموسيقى</button>
 
 
@@ -464,8 +467,8 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
       var playBtn = document.getElementById('playBtn');
       if (!audio || !playBtn) return;
       playBtn.addEventListener('click', function(){
-        if (audio.paused) { audio.play(); playBtn.textContent = 'تشغيل الموسيقى'; }
-        else { audio.pause(); playBtn.textContent = 'ايقاف التشغيل'; }
+        if (audio.paused) { audio.play(); playBtn.textContent = 'إيقاف الموسيقى'; }
+        else { audio.pause(); playBtn.textContent = 'تشغيل الموسيقى'; }
       });
     })();
   </script>
