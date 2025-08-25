@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0034)https://coolkidsnetwork.github.io/ -->
-<html lang="ar"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cool Network</title>
   <meta name="description" content="اشخاص باردون يقدمون اشياء باردة - Cool Network">
@@ -14,26 +14,117 @@
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background-color: #CCCC99; 
+      background-color: #CCCC99;
       color: #0d121a;
     }
-
-    
     .container { max-width: 760px; width: 100%; margin: 0 auto; padding: 10px; }
-
     img, video, canvas, audio { max-width: 100%; height: auto; }
-
     table { width: 100%; border-collapse: collapse; }
     td, th { vertical-align: top; }
 
-    
+    /* العناصر البديلة */
     .flash-bar { width: 100%; height: 18px; background: #000; display: block; }
     .flash-box { width: 100%; height: 82px; background: #000; display: block; }
     .dashboard-box { width: 120px; height: 175px; background: #000; display: block; }
 
-   
     #playBtn {
       position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #ccc;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+    #playBtn:hover { background-color: #aaa; }
+
+    @media (max-width: 1024px) { .container { padding: 15px; font-size: 16px; } }
+    @media (max-width: 600px)  { .container { padding: 10px; font-size: 14px; } }
+
+    @media (max-width: 1000px) { img { width: 100% !important; max-width: 100% !important; height: auto !important; } }
+
+    .pixel { display: block; width: 100%; height: 1px; opacity: 0; }
+    .footer { text-align: center; border-top: 1px solid #666; padding: 16px 0; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container" id="content">
+
+    <audio id="bg-audio" loop src="Music.mp3"></audio>
+    <button id="playBtn">تشغيل الموسيقى</button>
+
+    <!-- Placeholder Header -->
+    <table role="presentation">
+      <tr>
+        <td style="width:174px; background:#000; height:60px;"></td>
+        <td style="width:160px;"></td>
+        <td><div style="height:60px"></div></td>
+        <td style="width:10px; background:#000; height:70px;"></td>
+      </tr>
+    </table>
+
+    <table role="presentation">
+      <tr valign="top">
+        <td style="width:132px;">
+          <!-- Sidebar -->
+          <div class="flash-bar"></div>
+          <div class="flash-box" style="margin-top:10px;"></div>
+          <div class="dashboard-box" style="margin-top:10px;"></div>
+          <div style="width:132px; height:118px; background:#000; margin-top:10px;"></div>
+        </td>
+        <td style="width:16px;"></td>
+        <td>
+          <!-- Main Content -->
+          <div class="flash-box" style="height:225px; margin-bottom:10px;"></div>
+
+          <!-- شبكة البطاقات -->
+          <table role="presentation" width="100%">
+            <tr>
+              <td style="width:6px; background:#999966"></td>
+              <td>
+                <div style="width:120px; height:182px; background:#000;"></div>
+              </td>
+              <td style="width:17px; background:#999966"></td>
+              <td>
+                <div style="width:120px; height:182px; background:#000;"></div>
+              </td>
+              <td style="width:17px; background:#999966"></td>
+              <td>
+                <div style="width:120px; height:182px; background:#000;"></div>
+              </td>
+              <td style="width:17px; background:#999966"></td>
+              <td>
+                <div style="width:120px; height:182px; background:#000;"></div>
+              </td>
+              <td style="width:6px; background:#999966"></td>
+            </tr>
+          </table>
+
+          <div class="footer">© 2025 Cool Network - Team.</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    (function(){
+      var audio = document.getElementById('bg-audio');
+      var playBtn = document.getElementById('playBtn');
+      if (!audio || !playBtn) return;
+      playBtn.addEventListener('click', function(){
+        if (audio.paused) { audio.play(); playBtn.textContent = 'إيقاف الموسيقى'; }
+        else { audio.pause(); playBtn.textContent = 'تشغيل الموسيقى'; }
+      });
+    })();
+  </script>
+
+</body>
+</html>
       top: 15px;
       left: 15px;
       background-color: #ccc;
