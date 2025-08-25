@@ -31,59 +31,32 @@ if (top.location != self.location)
 <script language="JavaScript" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/mnfinder.js.download"></script>
 <link rel="stylesheet" type="text/css" href="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/home.css">
 	<style>
-  #audio-widget {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border-radius: 12px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    backdrop-filter: blur(6px);
-    cursor: grab;
-    z-index: 9999;
-    user-select: none;
-  }
-  #audio-widget button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  #audio-widget input[type="range"] {
-    width: 80px;
-  }
+#playBtn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #ccc; 
+  color: #000; 
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: background 0.3s;
+}
+
+#playBtn:hover {
+  background-color: #aaa;
+}
 </style>
 </head>
 <body bgcolor="#CCCC99" background="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/bg.gif" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" onload="launchToonflash();"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
 </div>
-	<audio id="bg-audio" loop playsinline>
-  <source src="Music.mp3" type="audio/mpeg" />
-  متصفحك لا يدعم تشغيل الصوت.
-</audio>
-
-<div id="audio-widget">
-  <button id="drag-handle" class="drag" title="اسحب لتحريك">
-    ☰
-  </button>
-
-  <button id="playPause" class="btn">
-    ▶
-  </button>
-
-  <button id="muteToggle" class="btn">
-    🔊
-  </button>
-
-  <input id="volume" class="vol" type="range" min="0" max="1" step="0.01" value="0.5">
-</div>
-
+<audio id="bg-audio" src="Music.mp3" loop></audio>
+<button id="playBtn">تشغيل الموسيقى</button>
 <script type="text/javascript">//<![CDATA[
 __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
   __wm.rw(1);
@@ -399,55 +372,18 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 </map>
 <img src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/cookie.crumb" width="1" height="1">
 <script>
-  const audio = document.getElementById('bg-audio');
-  const playPauseBtn = document.getElementById('playPause');
-  const muteToggleBtn = document.getElementById('muteToggle');
-  const volumeSlider = document.getElementById('volume');
-  const widget = document.getElementById('audio-widget');
-  const dragHandle = document.getElementById('drag-handle');
+const audio = document.getElementById('bg-audio');
+const playBtn = document.getElementById('playBtn');
 
-
-  playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playPauseBtn.textContent = '⏸';
-    } else {
-      audio.pause();
-      playPauseBtn.textContent = '▶';
-    }
-  });
-
-  muteToggleBtn.addEventListener('click', () => {
-    audio.muted = !audio.muted;
-    muteToggleBtn.textContent = audio.muted ? '🔇' : '🔊';
-  });
-
-  volumeSlider.addEventListener('input', () => {
-    audio.volume = volumeSlider.value;
-  });
-
-  let isDragging = false;
-  let offsetX, offsetY;
-
-  dragHandle.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - widget.offsetLeft;
-    offsetY = e.clientY - widget.offsetTop;
-    widget.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      widget.style.left = `${e.clientX - offsetX}px`;
-      widget.style.top = `${e.clientY - offsetY}px`;
-      widget.style.bottom = 'auto';
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    widget.style.cursor = 'grab';
-  });
+playBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playBtn.textContent = 'إيقاف الموسيقى';
+  } else {
+    audio.pause();
+    playBtn.textContent = 'تشغيل الموسيقى';
+  }
+});
 </script>
 
 
