@@ -45,24 +45,17 @@ if (top.location != self.location)
     backdrop-filter: blur(6px);
     cursor: grab;
     z-index: 9999;
+    user-select: none;
   }
-
-  #audio-widget .btn,
-  #audio-widget .drag {
+  #audio-widget button {
     background: none;
     border: none;
-    color: inherit;
+    color: white;
+    font-size: 18px;
     cursor: pointer;
-    font-size: 16px;
   }
-
   #audio-widget input[type="range"] {
     width: 80px;
-  }
-
-  #audio-widget .hint {
-    font-size: 12px;
-    opacity: 0.8;
   }
 </style>
 </head>
@@ -70,43 +63,25 @@ if (top.location != self.location)
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
 </div>
-	<audio id="bg-audio" autoplay loop muted playsinline>
+	<audio id="bg-audio" loop playsinline>
   <source src="Music.mp3" type="audio/mpeg" />
   متصفحك لا يدعم تشغيل الصوت.
 </audio>
 
-<div id="audio-widget" role="region" aria-label="مشغل موسيقى">
-  <button id="drag-handle" class="drag" title="اسحب لتحريك المشغّل" aria-label="تحريك">
-    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="5" cy="7" r="1.8"/><circle cx="12" cy="7" r="1.8"/><circle cx="19" cy="7" r="1.8"/>
-      <circle cx="5" cy="17" r="1.8"/><circle cx="12" cy="17" r="1.8"/><circle cx="19" cy="17" r="1.8"/>
-    </svg>
+<div id="audio-widget">
+  <button id="drag-handle" class="drag" title="اسحب لتحريك">
+    ☰
   </button>
 
-  <button id="playPause" class="btn" aria-label="تشغيل/إيقاف">
-    <svg id="icon-play" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 5v14l11-7z"></path>
-    </svg>
-    <svg id="icon-pause" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
-      <path d="M6 5h4v14H6zM14 5h4v14h-4z"></path>
-    </svg>
+  <button id="playPause" class="btn">
+    ▶
   </button>
 
-  <button id="muteToggle" class="btn" aria-label="كتم/إلغاء الكتم" title="كتم/إلغاء الكتم">
-    <svg id="icon-muted" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M16.5 12a4.5 4.5 0 0 0-1.1-2.9l1.4-1.4A6.5 6.5 0 0 1 18.5 12a6.5 6.5 0 0 1-1.7 4.3l-1.4-1.4c.7-.8 1.1-1.9 1.1-2.9z"></path>
-      <path d="M3 9v6h4l5 4V5L7 9H3z"></path>
-      <path d="m19 5-14 14" stroke="currentColor" stroke-width="2" fill="none"></path>
-    </svg>
-    <svg id="icon-unmuted" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
-      <path d="M3 9v6h4l5 4V5L7 9H3z"></path>
-      <path d="M16.5 12c0-1-.4-2.1-1.1-2.9l1.4-1.4A6.5 6.5 0 0 1 18.5 12a6.5 6.5 0 0 1-1.7 4.3l-1.4-1.4c.7-.8 1.1-1.9 1.1-2.9z"></path>
-      <path d="M14.5 7.1A5.9 5.9 0 0 1 18 12a5.9 5.9 0 0 1-3.5 4.9" fill="none" stroke="currentColor" stroke-width="2"></path>
-    </svg>
+  <button id="muteToggle" class="btn">
+    🔊
   </button>
 
-  <input id="volume" class="vol" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="مستوى الصوت">
-  <span id="tip" class="hint">الصوت مكتوم • اضغط لإلغاء الكتم</span>
+  <input id="volume" class="vol" type="range" min="0" max="1" step="0.01" value="0.5">
 </div>
 
 <script type="text/javascript">//<![CDATA[
@@ -428,37 +403,23 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
   const playPauseBtn = document.getElementById('playPause');
   const muteToggleBtn = document.getElementById('muteToggle');
   const volumeSlider = document.getElementById('volume');
-  const tip = document.getElementById('tip');
-  const iconPlay = document.getElementById('icon-play');
-  const iconPause = document.getElementById('icon-pause');
-  const iconMuted = document.getElementById('icon-muted');
-  const iconUnmuted = document.getElementById('icon-unmuted');
   const widget = document.getElementById('audio-widget');
   const dragHandle = document.getElementById('drag-handle');
+
 
   playPauseBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
-      iconPlay.style.display = 'none';
-      iconPause.style.display = 'inline';
+      playPauseBtn.textContent = '⏸';
     } else {
       audio.pause();
-      iconPlay.style.display = 'inline';
-      iconPause.style.display = 'none';
+      playPauseBtn.textContent = '▶';
     }
   });
 
   muteToggleBtn.addEventListener('click', () => {
     audio.muted = !audio.muted;
-    if (audio.muted) {
-      iconMuted.style.display = 'inline';
-      iconUnmuted.style.display = 'none';
-      tip.textContent = 'الصوت مكتوم • اضغط لإلغاء الكتم';
-    } else {
-      iconMuted.style.display = 'none';
-      iconUnmuted.style.display = 'inline';
-      tip.textContent = '';
-    }
+    muteToggleBtn.textContent = audio.muted ? '🔇' : '🔊';
   });
 
   volumeSlider.addEventListener('input', () => {
@@ -488,6 +449,7 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
     widget.style.cursor = 'grab';
   });
 </script>
+
 
 
 </body></html>
