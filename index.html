@@ -91,23 +91,21 @@ if (top.location != self.location)
 <script language="JavaScript" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/mnfinder.js.download"></script>
 <link href="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/home.css" rel="stylesheet" type="text/css"/>
 <style>
-  #playBtn {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background-color: #ccc;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 14px;
-    cursor: pointer;
-    z-index: 9999;
-    transition: background 0.3s ease;
-  }
-  #playBtn:hover {
-    background-color: #aaa;
-  }
+   #playBtn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #ccc;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+    #playBtn:hover { background-color: #iaaa; }
 </style>
 <style id="responsive-img-patch">
 /* Responsive image patch (in percentages) */
@@ -124,8 +122,14 @@ if (top.location != self.location)
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
 </div>
-<audio id="bg-audio" loop src="Music.mp3"></audio>
-<button id="playBtn">تشغيل الموسيقى</button>
+<audio id="bg-audio" loop="" src="Music.mp3"></audio>
+<button id="playBtn">ايقاف التشغيل</button>
+		<div class="container" id="content">
+
+    <audio id="bg-audio" loop="" src="Music.mp3"></audio>
+    <button id="playBtn">تشغيل الموسيقى</button>
+
+
 <script type="text/javascript">//<![CDATA[
 __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
   __wm.rw(1);
@@ -455,20 +459,16 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 </map>
 <img height="1" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/cookie.crumb" width="1"/>
 <script>
-  (function(){
-    var audio = document.getElementById('bg-audio');
-    var playBtn = document.getElementById('playBtn');
-    if (!audio || !playBtn) return;
-    playBtn.addEventListener('click', function(){
-      if (audio.paused) {
-        audio.play();
-        playBtn.textContent = 'إيقاف الموسيقى';
-      } else {
-        audio.pause();
-        playBtn.textContent = 'تشغيل الموسيقى';
-      }
-    });
-  })();
-</script>
+    (function(){
+      var audio = document.getElementById('bg-audio');
+      var playBtn = document.getElementById('playBtn');
+      if (!audio || !playBtn) return;
+      playBtn.addEventListener('click', function(){
+        if (audio.paused) { audio.play(); playBtn.textContent = 'تشغيل الموسيقى'; }
+        else { audio.pause(); playBtn.textContent = 'ايقاف التشغيل'; }
+      });
+    })();
+  </script>
+
 	</div>
 </body></html>
