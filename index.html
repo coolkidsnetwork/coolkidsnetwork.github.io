@@ -91,24 +91,23 @@ if (top.location != self.location)
 <script language="JavaScript" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/mnfinder.js.download"></script>
 <link href="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/home.css" rel="stylesheet" type="text/css"/>
 <style>
-#playBtn {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background-color: #ccc; 
-  color: #000; 
-  border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 9999;
-  transition: background 0.3s;
-}
-
-#playBtn:hover {
-  background-color: #aaa;
-}
+  #playBtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: background 0.3s ease;
+  }
+  #playBtn:hover {
+    background-color: #aaa;
+  }
 </style>
 <style id="responsive-img-patch">
 /* Responsive image patch (in percentages) */
@@ -125,7 +124,7 @@ if (top.location != self.location)
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
 </div>
-<audio id="bg-audio" loop="" src="Music.mp3"></audio>
+<audio id="bg-audio" loop src="Music.mp3"></audio>
 <button id="playBtn">تشغيل الموسيقى</button>
 <script type="text/javascript">//<![CDATA[
 __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
@@ -138,7 +137,7 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 <tbody><tr valign="top">
 <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="https://web.archive.org/web/20030201185438oe_/http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0" height="18" width="760"><param name="Movie" value="/tools/media/whats_on.swf"/><ruffle-embed height="18" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" src="/web/20030201185438mp_/http://www.cartoonnetwork.com/tools/media/whats_on.swf" width="760"></ruffle-embed></object></td>
 </tr>
-</tbody></table>
+</t></table>
 <!-- End Hat -->
 <!-- Begin GlobalNav and Banner Ad -->
 <table border="0" cellpadding="0" cellspacing="0" width="760">
@@ -456,18 +455,20 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 </map>
 <img height="1" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/cookie.crumb" width="1"/>
 <script>
-const audio = document.getElementById('bg-audio');
-const playBtn = document.getElementById('playBtn');
-
-playBtn.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-    playBtn.textContent = 'إيقاف الموسيقى';
-  } else {
-    audio.pause();
-    playBtn.textContent = 'تشغيل الموسيقى';
-  }
-});
+  (function(){
+    var audio = document.getElementById('bg-audio');
+    var playBtn = document.getElementById('playBtn');
+    if (!audio || !playBtn) return;
+    playBtn.addEventListener('click', function(){
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = 'إيقاف الموسيقى';
+      } else {
+        audio.pause();
+        playBtn.textContent = 'تشغيل الموسيقى';
+      }
+    });
+  })();
 </script>
 	</div>
 </body></html>
