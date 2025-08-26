@@ -462,37 +462,42 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 const audio = document.getElementById('bg-music');
 const btn = document.getElementById('mute-btn');
 
+console.log("🔍 الصفحة جاهزة. هل الصوت شغال؟", !audio.paused);
 
-audio.play().catch(() => {});
+
+audio.play().then(() => {
+  console.log("✅ تم تشغيل الصوت (Muted)");
+}).catch(err => {
+  console.log("❌ فشل التشغيل الأول:", err);
+});
 
 
 const enableAudio = () => {
+  console.log("📌 حدث تفاعل: إلغاء الكتم...");
   audio.muted = false;
-  audio.play();
+  audio.play().then(() => {
+    console.log("✅ الصوت شغال بدون كتم");
+  }).catch(err => {
+    console.log("❌ مشكلة عند التشغيل:", err);
+  });
   btn.textContent = "إيقاف الصوت";
   document.removeEventListener('click', enableAudio);
   document.removeEventListener('touchstart', enableAudio);
-  document.removeEventListener('scroll', enableAudio);
 };
-
-
 document.addEventListener('click', enableAudio);
 document.addEventListener('touchstart', enableAudio);
-document.addEventListener('scroll', enableAudio);
 
 
 btn.addEventListener('click', () => {
-  if (audio.muted) {
-    audio.muted = false;
+  if (audio.paused) {
     audio.play();
     btn.textContent = "إيقاف الصوت";
   } else {
-    audio.muted = true;
+    audio.pause();
     btn.textContent = "تشغيل الصوت";
   }
 });
 </script>
-
 
 	</div>
 </body></html>
