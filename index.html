@@ -68,6 +68,25 @@ img, video {
   }
 }
 </style>
+	<style>
+#mute-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s;
+}
+#mute-btn:hover {
+  background: #555;
+}
+</style>
     __wm.init("https://web.archive.org/web");
   __wm.wombat("http://www.cartoonnetwork.com:80/","20030201185438","https://web.archive.org/","web","https://web-static.archive.org/_static/",
 	      "1044125678");
@@ -105,6 +124,11 @@ if (top.location != self.location)
 <script>__wm.rw(0);</script>
 <div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
 </div>
+		<audio id="bg-music" autoplay loop muted playsinline>
+  <source src="Music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="mute-btn">تشغيل الصوت</button>
 
 <script type="text/javascript">//<![CDATA[
 __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
@@ -434,19 +458,39 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 <area alt="TV Parental Guidelines" coords="327,10,456,20" href="https://web.archive.org/web/20030201185438/http://www.tvguidelines.org/"/>
 </map>
 <img height="1" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/cookie.crumb" width="1"/>
-<audio id="bg-music" loop>
-  <source src="Music.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 const audio = document.getElementById('bg-music');
+const btn = document.getElementById('mute-btn');
+
+
+audio.play().catch(() => {});
+
+
 const enableAudio = () => {
+  audio.muted = false;
   audio.play();
-  document.removeEventListener('scroll', enableAudio);
+  btn.textContent = "إيقاف الصوت";
   document.removeEventListener('click', enableAudio);
+  document.removeEventListener('touchstart', enableAudio);
+  document.removeEventListener('scroll', enableAudio);
 };
-document.addEventListener('scroll', enableAudio);
+
+
 document.addEventListener('click', enableAudio);
+document.addEventListener('touchstart', enableAudio);
+document.addEventListener('scroll', enableAudio);
+
+
+btn.addEventListener('click', () => {
+  if (audio.muted) {
+    audio.muted = false;
+    audio.play();
+    btn.textContent = "إيقاف الصوت";
+  } else {
+    audio.muted = true;
+    btn.textContent = "تشغيل الصوت";
+  }
+});
 </script>
 
 
