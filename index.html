@@ -434,17 +434,21 @@ __wm.bt(750,27,25,2,"web","http://www.cartoonnetwork.com/","20030201185438",1996
 <area alt="TV Parental Guidelines" coords="327,10,456,20" href="https://web.archive.org/web/20030201185438/http://www.tvguidelines.org/"/>
 </map>
 <img height="1" src="file:///E:/Welcome%20to%20CartoonNetwork.com!_files/Welcome%20to%20CartoonNetwork.com!_files/cookie.crumb" width="1"/>
-<audio id="bg-music" autoplay loop muted>
-  <source src="Music.mp3" type="audio/mpeg">
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-document.addEventListener('click', () => {
-  const audio = document.getElementById('bg-music');
-  audio.muted = false;
+const audio = document.getElementById('bg-music');
+const enableAudio = () => {
   audio.play();
-});
+  document.removeEventListener('scroll', enableAudio);
+  document.removeEventListener('click', enableAudio);
+};
+document.addEventListener('scroll', enableAudio);
+document.addEventListener('click', enableAudio);
 </script>
+
 
 	</div>
 </body></html>
