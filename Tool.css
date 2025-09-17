@@ -1,0 +1,38 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.responsive-wrapper {
+  width: 100%;
+  max-width: 760px; /* original page width */
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+
+img, table, object, iframe, embed {
+  max-width: 100%;
+  height: auto !important;
+}
+
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  .responsive-wrapper {
+    padding: 0 5px;
+  }
+}
+/* wanna a cookie? /*
