@@ -35,4 +35,34 @@ img, table, object, iframe, embed {
     padding: 0 5px;
   }
 }
-/* wanna a cookie? /*
+/* wanna a cookie? */
+
+footer, 
+footer div, 
+footer p, 
+footer span, 
+footer .text-center {
+    margin: 0;
+    padding: 5px 0; /* reduce padding */
+    font-size: 12px; /* smaller text */
+    line-height: 1.2;
+}
+
+
+footer {
+    max-height: 40px;
+    overflow: hidden;
+}
+
+
+img, video, object, embed {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
